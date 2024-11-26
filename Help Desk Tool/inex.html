@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Helpdesk Ticketing System</h1>
+        </header>
+
+        <!-- Welcome Page with Background -->
+        <div id="welcomePage">
+            <h2>Welcome to the Helpdesk System</h2>
+            <button onclick="showLoginPage('admin')">Admin Login</button>
+            <button onclick="showLoginPage('user')">User Login</button>
+        </div>
+
+        <!-- Admin Login Form -->
+        <div id="adminLoginForm" class="form-container hidden">
+            <h2>Admin Login</h2>
+            <input type="email" id="adminEmail" placeholder="Email" required>
+            <input type="password" id="adminPassword" placeholder="Password" required>
+            <button onclick="login('admin')">Login</button>
+            <button onclick="cancelLogin()">Cancel</button>
+        </div>
+
+        <!-- User Login Form -->
+        <div id="userLoginForm" class="form-container hidden">
+            <h2>User Login</h2>
+            <input type="email" id="userEmail" placeholder="Email" required>
+            <input type="password" id="userPassword" placeholder="Password" required>
+            <button onclick="login('user')">Login</button>
+            <button onclick="cancelLogin()">Cancel</button>
+            <button onclick="showUserRegisterPage()">Register</button>
+
+        </div>
+
+        <!-- User Registration Form -->
+        <div id="userRegisterForm" class="form-container hidden">
+            <h2>User Registration</h2>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <input type="password" id="registerPassword" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <button onclick="registerUser()">Register</button>
+            <button onclick="cancelLogin()">Cancel</button>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="form-container hidden">
+            <h2>Admin Dashboard</h2>
+           <!-- Tickets Table -->
+            <h3>Tickets</h3>
+            <table id="ticketTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>User</th>
+                        <th>Ticket.description</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="ticketList"></tbody>
+            </table>
+
+            <div id="paginationControls"></div>
+            <div id="paginationControls" class="pagination"></div>
+
+            <div>
+                <!-- Button to view closed tickets -->
+                
+                <table id="ticketList">
+                    <!-- Open tickets will be displayed here -->
+                </table>
+            </div>
+
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="userDashboard" class="form-container hidden">
+            <h2>Your Tickets</h2>
+            <table id="userTicketTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTicketList"></tbody>
+            </table>
+            <button onclick="showTicketForm()">Add New Ticket</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+       <!-- Ticket History Page -->
+<div id="ticketHistoryPage" class="form-container hidden">
+    <h2>Ticket History</h2>
+    <table id="ticketHistoryTable">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Action</th>
+                <th>User</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody id="ticketHistoryList"></tbody>
+    </table>
+    <!-- Back to Dashboard button -->
+    <button onclick="clearTicketHistory()">Clear All History</button>
+    <button onclick="backToDashboard()">Back to Dashboard</button>
+</div>
+
+        <!-- Ticket Form for creating or editing tickets -->
+        <div id="ticketForm" class="form-container hidden">
+            <h2>Create / Edit Ticket</h2>
+            <input type="text" id="ticketTitle" placeholder="Ticket Title" required>
+            <textarea id="ticketDescription" placeholder="Ticket Description" required></textarea>
+            <select id="ticketPriority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button onclick="submitOrUpdateTicket()">Submit</button>
+            <button onclick="cancelTicketForm()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
